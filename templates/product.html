@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+  <table border="1" id="table_id">
+
+    <tr>
+      <th>ID</th>
+      <th>NAME</th>
+      <th>B.P</th>
+      <th>S.P</th>
+      <th>QUANTITY</th>
+
+    </tr>
+    {%for products in products%}
+    <tr>
+      <td>{{products[0]}}</td>
+      <td>{{products[1]}}</td>
+      <td>{{products[2]}}</td>
+      <td>{{products[3]}}</td>
+      <td>{{products[4]}}</td>
+      <td>
+        <!-- Button trigger modal -->
+<button type="button" class="sale btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{products[0]}}">
+  Make Sale
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop{{products[0]}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/make_sale" method="post">
+            <div class="form-group">
+              <label>Product id:</label>
+              <input name='pid' type="hidden" class="form-control" value="{{products[0]}}">
+            </div>
+            <div class="form-group">
+              <label>Quantity:</label>
+              <input name='qty' type="name" class="form-control" placeholder="Enter quantity">
+            </div>
+            <input type="submit" class="submit" value="submit">
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+      </td>
+      <td><a href="">View sales</a></td>
+    </tr>
+    {%endfor%}
+
+
+  </table>
+  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#table_id').DataTable();
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+</body>
+
+</html>

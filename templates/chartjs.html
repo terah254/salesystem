@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <canvas id="myChart" width="600" height="400"></canvas>
+      </div>
+
+      <div>
+        <canvas id="myChart1" width="600" height="400"></canvas>
+      </div>
+      
+      <div>
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels:{{labels | safe }},
+        datasets: [{
+            label: 'Items in my products',
+            data: {{values | safe}},
+            backgroundColor: [
+                
+            ],
+            borderColor: [
+               'red'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+       responsive:false
+    }
+});
+</script>
+</div>
+
+
+  
+<script>
+const ctx1 = document.getElementById('myChart1').getContext('2d');
+const myChart1 = new Chart1(ctx1, {
+type: 'bar',
+data: {
+    labels:{{item_sold | safe }},
+    datasets: [{
+        label: 'Items in my sales',
+        data: {{amount_sold | safe}},
+        backgroundColor: [
+            
+        ],
+        borderColor: [
+           'black'
+        ],
+        borderWidth: 1
+    }]
+},
+options: {
+   responsive:false
+}
+});
+</script>
+</body>
+</html>

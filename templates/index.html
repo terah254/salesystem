@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="#">IMS</a>
+        <a href="#">Dashboard</a>
+        <a href="#">Inventories</a>
+        <a href="#">Sales</a>
+        <a href="#">Stock</a>
+        <a href="#">Users</a>
+    </div>
+    
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    +Add New Item
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="{{url_for('add_products')}}"method="POST">
+                <label for="fname">Name</label><br>
+                <input type="text" name="Name"><br>
+                <label for="">Buying Price</label><br>
+                <input type="number" name="Buying Price"><br>
+                <label for="">Selling Price</label><br>
+                <input type="number" name="Selling Price"><br>
+                <label for=""> Stock Quantity</label><br>
+                <input type="number"name="quantity"><br>
+                <input type="Submit" value="Submit" class="sbt">
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div id="container">
+        <ul>
+            <li> <h1>Nav Menu</h1></li>
+            <li><a href="#">Dashboard</a></li>
+            <li> <a href="#">Inventories</a></li>
+            <li> <a href="#">Sales</a></li>
+            <li> <a href="#">Stock</a></li>
+            <li><a href="#">Users</a></li>
+
+        </ul>
+    </div>
+    <div id="tbt">
+        
+    </div>
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#table_id').DataTable();
+    });
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+</body>
+
+</html>
