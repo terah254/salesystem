@@ -4,8 +4,20 @@ from flask import Flask,render_template,request,redirect,url_for
 import psycopg2
 app = Flask(__name__)
 
-conn=psycopg2.connect(user="postgres",password="terah001A",host="localhost",port="5432",database="myduka")
+
+conn=psycopg2.connect(user='msmwbuasjjmkml',
+                      password='be1a0fe0b5e067e56e1f33531b1f79df70ccd49d75af012089a9c923f804a7c7',
+                      host='ec2-176-34-215-248.eu-west-1.compute.amazonaws.com',
+                      port='5432',
+                      database='d9o5unanlhobn9')
 cur=conn.cursor()
+
+
+
+cur.execute("CREATE TABLE IF NOT EXISTS products (id serial PRIMARY KEY, name VARCHAR ( 100 ) NOT NULL,buying_price NUMERIC(14, 2), selling_price NUMERIC(14, 2), stock_quantity INT )")
+cur.execute("CREATE TABLE IF NOT EXISTS sales (id serial PRIMARY KEY, pid int, quantity numeric(5,2), created_at DATE NOT NULL DEFAULT NOW())")
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -27,7 +39,7 @@ def add_products():
     conn.commit()
     return redirect("/products")
 
-@app.route("/sales",methods=["POST","GET"])
+@app.route("/sales")
 def sales():
         cur.execute("select * from sales;")
         sales=cur.fetchall()
