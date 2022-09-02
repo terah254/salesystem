@@ -87,7 +87,5 @@ def charts():
     return render_template('/chartjs.html',item_sold=item_sold,amount_sold=amount_sold,labels=labels,values=values)
 
 
-
-
-
-app.run()
+if __name__=='__main__':
+    app.run()
